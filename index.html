@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GOCLEAN - Solusi Kebersihan Tanpa Ribet. Layanan cleaning rumah, kantor, kosan, cuci sepatu, dan cuci tas profesional & terpercaya.">
+    <title>GOCLEAN - Solusi Kebersihan Tanpa Ribet | Company Profile & Online Booking</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- ===== GOCLEAN CHATBOT ===== -->
+<div class="gc-chatbot">
+    <button class="gc-chat-toggle" id="gcChatToggle"
+            aria-label="Buka chat GOCLEAN"
+            aria-expanded="false">
+        <i class="fa-solid fa-comments" id="gcChatIcon"></i>
+        <span class="gc-chat-notification"></span>
+    </button>
+
+    <section class="gc-chat-window" id="gcChatWindow"
+             aria-label="Chat GOCLEAN" aria-hidden="true">
+
+        <header class="gc-chat-header">
+            <div class="gc-bot-avatar">
+                <i class="fa-solid fa-broom"></i>
+            </div>
+
+            <div class="gc-bot-info">
+                <h3>GOCLEAN Assistant</h3>
+                <p><span class="gc-online-dot"></span> Online · Siap membantu</p>
+            </div>
+
+            <button id="gcChatClose" class="gc-chat-close"
+                    aria-label="Tutup chat">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </header>
+
+        <div class="gc-chat-messages" id="gcChatMessages"
+             aria-live="polite">
+            <div class="gc-chat-time">ASISTEN VIRTUAL GOCLEAN</div>
+
+            <div class="gc-message gc-bot-message">
+                <div class="gc-message-avatar">
+                    <i class="fa-solid fa-broom"></i>
+                </div>
+                <div class="gc-message-content">
+                    Halo! 👋 Selamat datang di GOCLEAN.
+                    <br><br>
+                    Ada yang bisa kami bantu? Kamu bisa bertanya
+                    tentang layanan, pemesanan, atau informasi lainnya.
+                </div>
+            </div>
+
+            <div class="gc-quick-questions">
+                <button data-question="layanan">🧹 Lihat layanan</button>
+                <button data-question="harga">💰 Tanya harga</button>
+                <button data-question="pesan">📅 Cara pemesanan</button>
+                <button data-question="admin">💬 Hubungi admin</button>
+            </div>
+        </div>
+
+        <form class="gc-chat-input-area" id="gcChatForm">
+            <input id="gcChatInput" type="text"
+                   placeholder="Tulis pesan kamu..."
+                   autocomplete="off"
+                   aria-label="Tulis pesan"
+                   maxlength="500" required>
+
+            <button type="submit" aria-label="Kirim pesan">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+
+        <div class="gc-chat-footer">
+            Dibuat dengan 💚 oleh GOCLEAN
+        </div>
+    </section>
+</div>
+<!-- ===== END GOCLEAN CHATBOT ===== -->
+
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden selection:bg-sky-500 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-500 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-sky-500/30 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-broom text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">GO<span class="text-sky-600">CLEAN</span></span>
+                        <p class="text-[10px] font-semibold tracking-wider text-emerald-600 uppercase -mt-1">Solusi Kebersihan</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-7">
+                    <a href="#home" class="nav-link text-sm font-medium text-slate-700 hover:text-sky-600 transition-colors py-1">Home</a>
+                    <a href="#tentang" class="nav-link text-sm font-medium text-slate-700 hover:text-sky-600 transition-colors py-1">Tentang Kami</a>
+                    <a href="#layanan" class="nav-link text-sm font-medium text-slate-700 hover:text-sky-600 transition-colors py-1">Layanan</a>
+                    <a href="#operator" class="nav-link text-sm font-medium text-slate-700 hover:text-sky-600 transition-colors py-1">Tim Operator</a>
+                    <a href="#galeri" class="nav-link text-sm font-medium text-slate-700 hover:text-sky-600 transition-colors py-1">Galeri</a>
+                    <a href="#testimoni" class="nav-link text-sm font-medium text-slate-700 hover:text-sky-600 transition-colors py-1">Testimoni</a>
+                    <a href="#kontak" class="nav-link text-sm font-medium text-slate-700 hover:text-sky-600 transition-colors py-1">Kontak</a>
+                </nav>
+
+                <!-- Action Button Desktop -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <button type="button" class="theme-toggle inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition-colors" aria-label="Aktifkan mode gelap" title="Ganti tema" aria-pressed="false">
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <a href="#pemesanan" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 to-sky-500 text-white font-semibold text-sm shadow-md hover:shadow-lg hover:from-sky-700 hover:to-sky-600 transition-all hover:-translate-y-0.5">
+                        <i class="fa-solid fa-calendar-check mr-2"></i> Pesan Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile Theme Toggle and Menu Button -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button type="button" class="theme-toggle inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition-colors" aria-label="Aktifkan mode gelap" title="Ganti tema" aria-pressed="false">
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button id="mobile-menu-btn" aria-label="Menu Navbar" class="p-2 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-xl transition-all">
+            <a href="#home" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">Home</a>
+            <a href="#tentang" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">Tentang Kami</a>
+            <a href="#layanan" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">Layanan</a>
+            <a href="#operator" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">Tim Operator</a>
+            <a href="#galeri" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">Galeri</a>
+            <a href="#testimoni" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">Testimoni</a>
+            <a href="#kontak" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">Kontak</a>
+            <div class="pt-2">
+                <a href="#pemesanan" class="mobile-nav-link block text-center w-full py-3 rounded-xl bg-sky-600 text-white font-semibold shadow-md">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="goclean-hero relative pt-28 pb-20 md:pt-36 md:pb-28 text-white overflow-hidden">
+        <!-- Video background: simpan video orang sedang cleaning dengan nama cleaning-background.mp4 di folder yang sama dengan index.html -->
+        <video class="hero-cleaning-video" autoplay muted loop playsinline poster="Gambar/cleaning-poster.jpg" aria-hidden="true">
+            <source src="cleaning-background.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay" aria-hidden="true"></div>
+        <!-- Decorative Background Patterns -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sky-200 text-xs sm:text-sm font-medium">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        Jasa Kebersihan Profesional #1 Terpercaya
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        <span class="text-white block">GOCLEAN</span>
+                        <span class="text-gradient block mt-1">Solusi Kebersihan Tanpa Ribet</span>
+                    </h1>
+
+                    <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        Layanan cleaning rumah, kantor, kosan, cuci sepatu, dan cuci tas dengan tenaga kerja profesional, ramah, dan terpercaya. Kami siap membuat hunian & perlengkapan Anda kembali bersih kinclong.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#pemesanan" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-500/30 hover:scale-[1.02] transition-all">
+                            <i class="fa-solid fa-calendar-check mr-2.5 text-lg"></i> Pesan Sekarang
+                        </a>
+                        <a href="#layanan" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-sm border border-white/20 hover:scale-[1.02] transition-all">
+                            <i class="fa-solid fa-list-check mr-2.5 text-lg"></i> Lihat Layanan
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="pt-6 flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-300 font-medium">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Alat Lengkap</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Bebas Bau Lengket</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Tepat Waktu</span>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column / Visual Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 group">
+                            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" alt="Tim Cleaning GOCLEAN" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                            
+                            <!-- Floating Card Overlay -->
+                            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-card text-slate-800 shadow-xl border border-white/40">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-sky-500 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-slate-900">Garansi Kepuasan 100%</h4>
+                                        <p class="text-xs text-slate-600">Hasil bersih maksimal atau kami bersihkan ulang gratis!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- STATISTICS CARDS -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Stat 1 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 text-center hover:bg-white/15 transition-all">
+                    <div class="text-sky-300 mb-2"><i class="fa-solid fa-users text-2xl sm:text-3xl"></i></div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white counter" data-target="1200">0</div>
+                    <div class="text-xs sm:text-sm text-slate-300 font-medium">Pelanggan Dilayani</div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 text-center hover:bg-white/15 transition-all">
+                    <div class="text-emerald-300 mb-2"><i class="fa-solid fa-circle-check text-2xl sm:text-3xl"></i></div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white counter" data-target="2500">0</div>
+                    <div class="text-xs sm:text-sm text-slate-300 font-medium">Pekerjaan Selesai</div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 text-center hover:bg-white/15 transition-all">
+                    <div class="text-amber-300 mb-2"><i class="fa-solid fa-user-shield text-2xl sm:text-3xl"></i></div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white counter" data-target="25">0</div>
+                    <div class="text-xs sm:text-sm text-slate-300 font-medium">Operator Aktif</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 text-center hover:bg-white/15 transition-all">
+                    <div class="text-yellow-400 mb-2"><i class="fa-solid fa-star text-2xl sm:text-3xl"></i></div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">4.9 / 5</div>
+                    <div class="text-xs sm:text-sm text-slate-300 font-medium">Rating Pelanggan</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TENTANG KAMI SECTION -->
+    <section id="tentang" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-3 py-1.5 rounded-full border border-sky-100">Profil Perusahaan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Mengenal Lebih Dekat GOCLEAN</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Image Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80" alt="Kebersihan Ruangan GOCLEAN" class="w-full h-[450px] object-cover">
+                        <div class="absolute inset-0 bg-sky-900/10"></div>
+                    </div>
+                    <!-- Badge Badge -->
+                    <div class="absolute -bottom-6 -right-6 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 max-w-xs hidden sm:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Terstandarisasi & Profesional</h5>
+                                <p class="text-xs text-slate-500">Peralatan modern & SOP pembersihan menyeluruh.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Details -->
+                <div class="lg:col-span-7 space-y-6">
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        <strong class="text-sky-700 font-bold">GOCLEAN</strong> adalah perusahaan jasa kebersihan terdepan yang menyediakan layanan cleaning rumah, cleaning kantor, cleaning kosan, cuci sepatu, dan cuci tas. Kami berkomitmen memberikan layanan yang cepat, higienis, profesional, dan terpercaya untuk membantu Anda menikmati lingkungan yang bersih, wangi, dan nyaman.
+                    </p>
+
+                    <!-- Visi Card -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-r from-sky-50 to-white border border-sky-100 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-sky-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Visi Kami</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    "Menjadi penyedia jasa kebersihan terpercaya dan pilihan nomor satu di Indonesia dengan standar kualitas layanan kelas dunia."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Misi List Cards -->
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-bullseye text-emerald-500"></i> Misi Kami
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3 hover:border-sky-300 transition-colors">
+                                <i class="fa-solid fa-circle-check text-emerald-500 text-lg mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-slate-800 text-sm">Pelayanan Terbaik</h4>
+                                    <p class="text-xs text-slate-500">Memberikan pelayanan kebersihan yang responsif dan solutif.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3 hover:border-sky-300 transition-colors">
+                                <i class="fa-solid fa-circle-check text-emerald-500 text-lg mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-slate-800 text-sm">Menjaga Kualitas</h4>
+                                    <p class="text-xs text-slate-500">SOP kerja ketat demi hasil pembersihan yang konsisten.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3 hover:border-sky-300 transition-colors">
+                                <i class="fa-solid fa-circle-check text-emerald-500 text-lg mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-slate-800 text-sm">Kepuasan Pelanggan</h4>
+                                    <p class="text-xs text-slate-500">Mengutamakan senyum & kepuasan di setiap pekerjaan.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3 hover:border-sky-300 transition-colors">
+                                <i class="fa-solid fa-circle-check text-emerald-500 text-lg mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-slate-800 text-sm">Tenaga Kerja Profesional</h4>
+                                    <p class="text-xs text-slate-500">Operator berpengalaman, jujur, dan terlatih.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LAYANAN SECTION -->
+    <section id="layanan" class="py-20 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">Katalog Layanan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Layanan Kebersihan Unggulan Kami</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Pilih kategori layanan sesuai kebutuhan Anda dengan harga transparan tanpa biaya tersembunyi.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Kategori 1: Cleaning Service -->
+            <div class="mb-14">
+                <div class="flex items-center justify-between mb-6 pb-2 border-b border-slate-200">
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-spray-can text-sky-600"></i> Category: Cleaning Service
+                    </h3>
+                    <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-700 font-bold text-xs sm:text-sm">
+                        Tarif: Rp50.000 / Jam
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Cleaning Rumah -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors shadow-inner">
+                                <i class="fa-solid fa-house-chimney"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Cleaning Rumah</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Pembersihan menyeluruh ruang tamu, kamar tidur, dapur, toilet, hingga penyedotan debu karpet dan pel lantai.</p>
+                            <ul class="space-y-2 mb-6 text-xs text-slate-500">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Sapu & Pel Seluruh Ruangan</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Pembersihan Kamar Mandi & Kerak</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Lap Perabot & Penataan Rapi</li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Mulai Dari</span>
+                                <span class="text-lg font-extrabold text-sky-600">Rp 50.000 <span class="text-xs font-normal text-slate-500">/jam</span></span>
+                            </div>
+                            <button onclick="selectService('Cleaning Rumah')" class="px-4 py-2 rounded-xl bg-sky-50 text-sky-700 hover:bg-sky-600 hover:text-white font-semibold text-xs transition-colors">
+                                Pesan Layanan
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Cleaning Kantor -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors shadow-inner">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Cleaning Kantor</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Layanan pembersihan meja kerja, kaca kantor, ruang rapat, pantri, serta sanitasi ruangan kerja agar produktif.</p>
+                            <ul class="space-y-2 mb-6 text-xs text-slate-500">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Sanitasi Meja & Komputer</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Pembersihan Kaca & Jendela</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Buang Sampah & Sterilisasi</li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Mulai Dari</span>
+                                <span class="text-lg font-extrabold text-sky-600">Rp 50.000 <span class="text-xs font-normal text-slate-500">/jam</span></span>
+                            </div>
+                            <button onclick="selectService('Cleaning Kantor')" class="px-4 py-2 rounded-xl bg-sky-50 text-sky-700 hover:bg-sky-600 hover:text-white font-semibold text-xs transition-colors">
+                                Pesan Layanan
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Cleaning Kosan -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors shadow-inner">
+                                <i class="fa-solid fa-door-open"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Cleaning Kosan</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Solusi praktis bagi mahasiswa dan pekerja yang sibuk. Kamar kosan bersih, wangi, siap huni tanpa ribet.</p>
+                            <ul class="space-y-2 mb-6 text-xs text-slate-500">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Rapikan Tempat Tidur & Lemari</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Bersihkan Kamar Mandi Dalam</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Disinfeksi & Pengharum Ruangan</li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Mulai Dari</span>
+                                <span class="text-lg font-extrabold text-sky-600">Rp 50.000 <span class="text-xs font-normal text-slate-500">/jam</span></span>
+                            </div>
+                            <button onclick="selectService('Cleaning Kosan')" class="px-4 py-2 rounded-xl bg-sky-50 text-sky-700 hover:bg-sky-600 hover:text-white font-semibold text-xs transition-colors">
+                                Pesan Layanan
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Kategori 2: Shoe & Bag Care -->
+            <div>
+                <div class="flex items-center justify-between mb-6 pb-2 border-b border-slate-200">
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-shoe-prints text-emerald-600"></i> Category: Shoe & Bag Care
+                    </h3>
+                    <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs sm:text-sm">
+                        Tarif: Rp35.000 / Item
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    
+                    <!-- Card 4: Cuci Sepatu -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-5 group-hover:bg-emerald-600 group-hover:text-white transition-colors shadow-inner">
+                                <i class="fa-solid fa-shoe-prints"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Cuci Sepatu (Shoe Cleaning)</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Deep cleaning sepatu sneakers, leather, hingga heels menggunakan cairan khusus tanpa merusak bahan.</p>
+                            <ul class="space-y-2 mb-6 text-xs text-slate-500">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Deep Cleaning Outsole, Midsole & Upper</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Anti-Bacterial & Odor Treatment</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Fast Drying tanpa merusak bahan</li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Tarif Flat</span>
+                                <span class="text-lg font-extrabold text-emerald-600">Rp 35.000 <span class="text-xs font-normal text-slate-500">/pasang</span></span>
+                            </div>
+                            <button onclick="selectService('Cuci Sepatu')" class="px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white font-semibold text-xs transition-colors">
+                                Pesan Layanan
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Cuci Tas -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-5 group-hover:bg-emerald-600 group-hover:text-white transition-colors shadow-inner">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Cuci Tas (Bag Care)</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Pembersihan ransel, tas kerja, totebag, hingga handbag dari noda kusam, jamur, serta penanganan bau.</p>
+                            <ul class="space-y-2 mb-6 text-xs text-slate-500">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Handwash & Premium Leather Conditioner</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Pembersihan Dalam & Kantong Resleting</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Treatment Anti-Jamur & Parfum</li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Tarif Flat</span>
+                                <span class="text-lg font-extrabold text-emerald-600">Rp 35.000 <span class="text-xs font-normal text-slate-500">/pcs</span></span>
+                            </div>
+                            <button onclick="selectService('Cuci Tas')" class="px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white font-semibold text-xs transition-colors">
+                                Pesan Layanan
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TIM OPERATOR SECTION -->
+    <section id="operator" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-3 py-1.5 rounded-full border border-sky-100">Tim Profesional</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Tim Operator Andal GOCLEAN</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Anda dapat memilih operator favorit sesuai keinginan untuk menangani kebersihan Anda.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Operator 1: Anggi -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 text-center flex flex-col justify-between group">
+                    <div>
+                        <div class="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-md">
+                            <img src="Gambar/anggie.jpg" alt="Anggi Operator" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold mb-2">⭐ 4.9 (180+ Ulasan)</span>
+                        <h3 class="text-xl font-bold text-slate-900">Anggi</h3>
+                        <p class="text-xs font-semibold text-sky-600 uppercase mb-3 tracking-wide">Cleaning Service Specialist</p>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-6">Spesialis pembersihan rumah tinggal & kosan. Sangat teliti pada sudut-sudut kecil, perabot, dan kerapihan interior.</p>
+                    </div>
+
+                    <button onclick="selectOperator('Anggi')" class="w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user-check"></i> Pilih Operator Anggi
+                    </button>
+                </div>
+
+                <!-- Operator 2: Arbie -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 text-center flex flex-col justify-between group">
+                    <div>
+                        <div class="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-md">
+                            <img src="Gambar/Arbie.jpeg" alt="Arbie Operator" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold mb-2">⭐ 5.0 (210+ Ulasan)</span>
+                        <h3 class="text-xl font-bold text-slate-900">Arbie Dwi Prayoga</h3>
+                        <p class="text-xs font-semibold text-sky-600 uppercase mb-3 tracking-wide">Cleaning Service Specialist</p>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-6">Ahli dalam deep cleaning kantor & gedung commercial. Menguasai penggunaan mesin polisher dan sanitasi area kerja.</p>
+                    </div>
+
+                    <button onclick="selectOperator('Arbie')" class="w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user-check"></i> Pilih Operator Arbie
+                    </button>
+                </div>
+
+                <!-- Operator 3: Rizal Ivansyah Suwandaru -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 text-center flex flex-col justify-between group">
+                    <div>
+                        <div class="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-md">
+                            <img src="Gambar/IvansyahSuwandaru.jpeg" alt="Rizal Ivansyah Suwandaru Operator" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold mb-2">⭐ 4.9 (195+ Ulasan)</span>
+                        <h3 class="text-xl font-bold text-slate-900">Rizal Ivansyah Suwandaru</h3>
+                        <p class="text-xs font-semibold text-sky-600 uppercase mb-3 tracking-wide">Cleaning Service Specialist</p>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-6">Pakar perawatan sepatu & tas branded serta pembersihan cepat tempat tinggal. Cermat dan cekatan.</p>
+                    </div>
+
+                    <button onclick="selectOperator('Rizal')" class="w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user-check"></i> Pilih Operator Rizal
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FORM PEMESANAN SECTION -->
+    <section id="pemesanan" class="py-20 hero-bg text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-300 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">Form Pemesanan Instan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Pesan Layanan Kebersihan</h2>
+                <p class="text-slate-200 text-sm mt-2">Isi formulir di bawah ini untuk estimasi biaya otomatis dan reservasi langsung via WhatsApp.</p>
+            </div>
+
+            <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/20">
+                <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        
+                        <!-- Nama Lengkap -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Nama Lengkap <span class="text-rose-500">*</span></label>
+                            <input type="text" id="custName" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+                        </div>
+
+                        <!-- Nomor WhatsApp -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Nomor WhatsApp <span class="text-rose-500">*</span></label>
+                            <input type="tel" id="custPhone" required placeholder="Contoh: 62895340806586" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+                        </div>
+
+                        <!-- Alamat -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Alamat Lengkap <span class="text-rose-500">*</span></label>
+                            <textarea id="custAddress" rows="2" required placeholder="Masukkan alamat lengkap pengerjaan / penjemputan..." class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                        </div>
+
+                        <!-- Jenis Layanan -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Jenis Layanan <span class="text-rose-500">*</span></label>
+                            <select id="serviceType" onchange="calculateTotal()" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm font-medium">
+                                <option value="Cleaning Rumah">Cleaning Rumah (Rp50.000/jam)</option>
+                                <option value="Cleaning Kantor">Cleaning Kantor (Rp50.000/jam)</option>
+                                <option value="Cleaning Kosan">Cleaning Kosan (Rp50.000/jam)</option>
+                                <option value="Cuci Sepatu">Cuci Sepatu (Rp35.000/item)</option>
+                                <option value="Cuci Tas">Cuci Tas (Rp35.000/item)</option>
+                            </select>
+                        </div>
+
+                        <!-- Operator Pilihan -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Operator Pilihan</label>
+                            <select id="selectedOperator" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm font-medium">
+                                <option value="Bebas / Operator Terbaik">Bebas / Pilihkan Operator Terbaik</option>
+                                <option value="Anggi">Anggi (Cleaning Specialist)</option>
+                                <option value="Arbie">Arbie (Cleaning Specialist)</option>
+                                <option value="Rizal">Rizal (Cleaning Specialist)</option>
+                            </select>
+                        </div>
+
+                        <!-- Tanggal Pengerjaan -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Tanggal Pengerjaan <span class="text-rose-500">*</span></label>
+                            <input type="date" id="workDate" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+                        </div>
+
+                        <!-- Jam Pengerjaan -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Jam Pengerjaan <span class="text-rose-500">*</span></label>
+                            <input type="time" id="workTime" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+                        </div>
+
+                        <!-- Dynamic Field: Durasi (Jam) OR Jumlah Item (Pcs) -->
+                        <div id="quantityFieldContainer">
+                            <label id="quantityLabel" class="block text-xs font-bold uppercase text-slate-700 mb-2">Durasi Kerja (Jam) <span class="text-rose-500">*</span></label>
+                            <input type="number" id="quantityInput" min="1" max="24" value="2" oninput="calculateTotal()" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm font-semibold">
+                        </div>
+
+                        <!-- Info Formula Display -->
+                        <div class="flex items-center justify-center">
+                            <div class="w-full p-4 rounded-xl bg-sky-50 border border-sky-100 text-sky-800 text-xs">
+                                <i class="fa-solid fa-calculator mr-1"></i> <span id="formulaText">Perhitungan: 2 jam x Rp 50.000</span>
+                            </div>
+                        </div>
+
+                        <!-- Catatan Tambahan -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Catatan Tambahan (Opsional)</label>
+                            <textarea id="additionalNotes" rows="2" placeholder="Contoh: Fokus pembersihan kamar mandi utama & kaca jendela depan." class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                        </div>
+
+                    </div>
+
+                    <!-- Total Estimasi Card -->
+                    <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
+                        <div>
+                            <span class="text-xs uppercase text-slate-400 font-semibold tracking-wider block">Total Estimasi Biaya</span>
+                            <span id="totalCostDisplay" class="text-3xl font-extrabold text-emerald-400">Rp 100.000</span>
+                        </div>
+                        <button type="submit" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-base shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Pesan via WhatsApp
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GALERI SECTION -->
+    <section id="galeri" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-3 py-1.5 rounded-full border border-sky-100">Dokumentasi Kerja</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Galeri Hasil Pengerjaan</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Lihat perbedaan nyata kualitas kebersihan sebelum dan sesudah ditangani GOCLEAN.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Gallery Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+                <button onclick="filterGallery('all')" class="gallery-filter-btn active px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-sky-600 text-white transition-all">Semua</button>
+                <button onclick="filterGallery('rumah')" class="gallery-filter-btn px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-sky-50 hover:text-sky-600 transition-all">Cleaning Rumah</button>
+                <button onclick="filterGallery('kantor')" class="gallery-filter-btn px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-sky-50 hover:text-sky-600 transition-all">Cleaning Kantor</button>
+                <button onclick="filterGallery('kosan')" class="gallery-filter-btn px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-sky-50 hover:text-sky-600 transition-all">Cleaning Kosan</button>
+                <button onclick="filterGallery('shoe')" class="gallery-filter-btn px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-sky-50 hover:text-sky-600 transition-all">Shoe & Bag Care</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Item 1: Rumah -->
+                <div class="gallery-item rumah bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Cleaning Rumah After" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-emerald-500 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">BEFORE & AFTER</span>
+                        <div class="gallery-overlay absolute inset-0 bg-slate-900/60 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+                            <button onclick="openLightbox('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80', 'Before & After Cleaning Rumah')" class="p-3 bg-white text-slate-900 rounded-full hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-expand text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-sm">Pembersihan Ruang Tamu & Lantai</h4>
+                        <p class="text-xs text-slate-500">Kategori: Cleaning Rumah</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Kantor -->
+                <div class="gallery-item kantor bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Cleaning Kantor After" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-emerald-500 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">BEFORE & AFTER</span>
+                        <div class="gallery-overlay absolute inset-0 bg-slate-900/60 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+                            <button onclick="openLightbox('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', 'Before & After Cleaning Kantor')" class="p-3 bg-white text-slate-900 rounded-full hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-expand text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-sm">Sanitasi & Penataan Ruang Rapat Kantor</h4>
+                        <p class="text-xs text-slate-500">Kategori: Cleaning Kantor</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Kosan -->
+                <div class="gallery-item kosan bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80" alt="Cleaning Kosan After" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-emerald-500 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">BEFORE & AFTER</span>
+                        <div class="gallery-overlay absolute inset-0 bg-slate-900/60 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+                            <button onclick="openLightbox('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80', 'Before & After Cleaning Kosan')" class="p-3 bg-white text-slate-900 rounded-full hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-expand text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-sm">Deep Cleaning Kamar Kos Minimalis</h4>
+                        <p class="text-xs text-slate-500">Kategori: Cleaning Kosan</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Cuci Sepatu -->
+                <div class="gallery-item shoe bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80" alt="Hasil Cuci Sepatu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-sky-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">HASIL CUCI SEPATU</span>
+                        <div class="gallery-overlay absolute inset-0 bg-slate-900/60 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+                            <button onclick="openLightbox('https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1200&q=80', 'Hasil Cuci Sepatu White Sneakers')" class="p-3 bg-white text-slate-900 rounded-full hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-expand text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-sm">Deep Clean Sneakers Putih Kesayangan</h4>
+                        <p class="text-xs text-slate-500">Kategori: Cuci Sepatu</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Cuci Tas -->
+                <div class="gallery-item shoe bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80" alt="Hasil Cuci Tas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-sky-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">HASIL CUCI TAS</span>
+                        <div class="gallery-overlay absolute inset-0 bg-slate-900/60 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+                            <button onclick="openLightbox('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80', 'Hasil Cuci Tas Kulit')" class="p-3 bg-white text-slate-900 rounded-full hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-expand text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-sm">Restorasi & Cleaning Tas Leather</h4>
+                        <p class="text-xs text-slate-500">Kategori: Cuci Tas</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Toilet Cleaning -->
+                <div class="gallery-item rumah bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Pembersihan Kerak Kamar Mandi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-emerald-500 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">BEFORE & AFTER</span>
+                        <div class="gallery-overlay absolute inset-0 bg-slate-900/60 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+                            <button onclick="openLightbox('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80', 'Pembersihan Kerak & Sanitasi Toilet')" class="p-3 bg-white text-slate-900 rounded-full hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-expand text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-sm">Pembersihan Kerak Toilet & Keramik</h4>
+                        <p class="text-xs text-slate-500">Kategori: Cleaning Rumah</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTIMONI SECTION -->
+    <section id="testimoni" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">Ulasan Pelanggan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Apa Kata Mereka Tentang GOCLEAN?</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Slider Container -->
+            <div class="relative bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-200">
+                
+                <!-- Slide 1 -->
+                <div class="testimonial-slide active text-center">
+                    <div class="text-amber-400 text-xl mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 text-base sm:text-xl font-medium italic leading-relaxed max-w-3xl mx-auto mb-8">
+                        "Sangat puas dengan hasil cleaning kosan dari GOCLEAN. Mas Arbie bekerja sangat rapi, wangi, dan toilet yang tadinya berkerak jadi seperti baru lagi! Pasti bakal langganan."
+                    </p>
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-sky-500">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Siti Rahmawati" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-bold text-slate-900 text-sm">Siti Rahmawati</h4>
+                            <p class="text-xs text-slate-500">Pengguna Layanan Cleaning Kosan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="testimonial-slide text-center">
+                    <div class="text-amber-400 text-xl mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 text-base sm:text-xl font-medium italic leading-relaxed max-w-3xl mx-auto mb-8">
+                        "Pelayanan cuci sepatu dan cuci tas di GOCLEAN sangat memuaskan. Sneakers putih saya kembali kinclong tanpa merusak bahan. Mbak Anggi & Mas Rizal sangat komunikatif!"
+                    </p>
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-sky-500">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Hendrik Wijaya" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-bold text-slate-900 text-sm">Hendrik Wijaya</h4>
+                            <p class="text-xs text-slate-500">Pengguna Layanan Shoe & Bag Care</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="testimonial-slide text-center">
+                    <div class="text-amber-400 text-xl mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 text-base sm:text-xl font-medium italic leading-relaxed max-w-3xl mx-auto mb-8">
+                        "Kantor kami mempercayakan pembersihan harian ke GOCLEAN. Tim bekerja sangat cepat, tidak mengganggu aktivitas kerja, dan biaya jam-jamannya sangat hemat."
+                    </p>
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-sky-500">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Dian Lestari" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-bold text-slate-900 text-sm">Dian Lestari</h4>
+                            <p class="text-xs text-slate-500">HR Manager - Cleaning Kantor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="flex items-center justify-between mt-6 pt-6 border-t border-slate-100">
+                    <button onclick="prevTestimonial()" aria-label="Testimoni Sebelumnya" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-sky-600 hover:text-white transition-colors flex items-center justify-center text-slate-600">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    
+                    <!-- Dots -->
+                    <div class="flex gap-2">
+                        <span onclick="setTestimonial(0)" class="testi-dot w-3 h-3 rounded-full bg-sky-600 cursor-pointer transition-all"></span>
+                        <span onclick="setTestimonial(1)" class="testi-dot w-3 h-3 rounded-full bg-slate-300 cursor-pointer transition-all"></span>
+                        <span onclick="setTestimonial(2)" class="testi-dot w-3 h-3 rounded-full bg-slate-300 cursor-pointer transition-all"></span>
+                    </div>
+
+                    <button onclick="nextTestimonial()" aria-label="Testimoni Selanjutnya" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-sky-600 hover:text-white transition-colors flex items-center justify-center text-slate-600">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KONTAK SECTION -->
+    <section id="kontak" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-3 py-1.5 rounded-full border border-sky-100">Hubungi Kami</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Lokasi & Kontak Resmi</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Tim Customer Service kami siap melayani pertanyaan dan reservasi Anda 7 hari seminggu.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Contact Information Cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <!-- Card Alamat -->
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base mb-1">Alamat Kantor</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Jl. Raya Serang No.Km.10, Kadu Jaya, Kec. Curug, Kabupaten Tangerang, Banten 15810
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card WhatsApp -->
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base mb-1">WhatsApp & Telepon</h4>
+                            <a href="https://wa.me/62895340806586" target="_blank" class="text-sky-600 font-semibold hover:underline text-sm block">0895-3408-06586</a>
+                            <p class="text-xs text-slate-500">Respon cepat via chat WhatsApp</p>
+                        </div>
+                    </div>
+
+                    <!-- Card Email -->
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base mb-1">Email </h4>
+                            <a href="mailto:ivansyah300406@gmail.com" class="text-sky-600 font-semibold hover:underline text-sm block">ivansyah300406@gmail.com</a>
+                            <p class="text-xs text-slate-500">Untuk tawaran kerjasama & pertanyaan umum</p>
+                        </div>
+                    </div>
+
+                    <!-- Card Jam Operasional -->
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base mb-1">Jam Operasional</h4>
+                            <p class="text-slate-600 text-sm">
+                                <strong>Senin - Minggu:</strong> 07.00 - 20.00 WIB
+                            </p>
+                            <span class="inline-block mt-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                                Buka Setiap Hari (Termasuk Hari Libur)
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Google Maps Embed -->
+                <div class="lg:col-span-7 h-full min-h-[400px] rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+                    <iframe src="https://www.google.com/maps/embed?pb=!3m2!1sid!2sid!4v1791813005724!5m2!1sid!2sid!6m8!1m7!1sVpmMZbWNTw66A4bEqbmU4g!2m2!1d-6.222414615971333!2d106.5607789134402!3f290.12027!4f0!5f0.7820865974627469" class="w-full h-full min-h-[420px] border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#home" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-emerald-400 flex items-center justify-center text-white shadow-lg">
+                            <i class="fa-solid fa-broom text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-extrabold tracking-tight text-white">GO<span class="text-sky-400">CLEAN</span></span>
+                    </a>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                        GOCLEAN adalah perusahaan jasa kebersihan profesional terpercaya di Indonesia. Kami menghadirkan solusi rumah & kantor bersih tanpa ribet dengan harga terjangkau.
+                    </p>
+                    <div class="pt-2 flex items-center gap-3">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-sky-600 transition-colors flex items-center justify-center text-slate-300 hover:text-white">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-sky-600 transition-colors flex items-center justify-center text-slate-300 hover:text-white">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" aria-label="TikTok" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-sky-600 transition-colors flex items-center justify-center text-slate-300 hover:text-white">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/62895340806586" target="_blank" aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-500 transition-colors flex items-center justify-center text-slate-300 hover:text-white">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#home" class="hover:text-sky-400 transition-colors">Home</a></li>
+                        <li><a href="#tentang" class="hover:text-sky-400 transition-colors">Tentang Kami</a></li>
+                        <li><a href="#layanan" class="hover:text-sky-400 transition-colors">Katalog Layanan</a></li>
+                        <li><a href="#operator" class="hover:text-sky-400 transition-colors">Tim Operator</a></li>
+                        <li><a href="#pemesanan" class="hover:text-sky-400 transition-colors">Form Pemesanan</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Layanan Utama</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#layanan" class="hover:text-sky-400 transition-colors">Cleaning Rumah</a></li>
+                        <li><a href="#layanan" class="hover:text-sky-400 transition-colors">Cleaning Kantor</a></li>
+                        <li><a href="#layanan" class="hover:text-sky-400 transition-colors">Cleaning Kosan</a></li>
+                        <li><a href="#layanan" class="hover:text-sky-400 transition-colors">Cuci Sepatu Premium</a></li>
+                        <li><a href="#layanan" class="hover:text-sky-400 transition-colors">Cuci Tas & Restorasi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Operational Info -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Jam Kerja</h4>
+                    <div class="text-xs text-slate-400 space-y-2">
+                        <p><strong class="text-white block">Senin - Minggu:</strong> 07.00 - 20.00 WIB</p>
+                        <p class="text-[11px] text-emerald-400"><i class="fa-solid fa-circle-check"></i> Layanan Tanggal Merah Tetap Buka</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Copyright Notice -->
+            <div class="pt-8 text-center sm:flex sm:items-center sm:justify-between text-xs text-slate-500">
+                <p>© 2026 GOCLEAN. All Rights Reserved. Solusi Kebersihan Tanpa Ribet.</p>
+                <p class="mt-2 sm:mt-0">Dioperasikan secara profesional oleh Tim GOCLEAN Indonesia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL FOR GALLERY PREVIEW -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
+            <button onclick="closeLightbox()" aria-label="Tutup Preview Modal" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-rose-600 transition-colors flex items-center justify-center z-10">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="p-2">
+                <img id="lightboxImg" src="" alt="Preview Img" class="w-full max-h-[75vh] object-contain rounded-xl">
+            </div>
+            <div class="p-4 bg-slate-950 text-center">
+                <h4 id="lightboxTitle" class="text-white font-bold text-sm"></h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="script.js"></script>
+</body>
+</html>
